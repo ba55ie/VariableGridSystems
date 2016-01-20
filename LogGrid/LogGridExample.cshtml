@@ -1,0 +1,89 @@
+﻿@{
+    System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+    customCulture.NumberFormat.NumberDecimalSeparator = ".";
+
+    System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
+    int numberOfCols = 7;
+    double logScale = 1.61803398875;
+    List<double> cols = new List<double> { };
+    double total = 0;
+
+
+    for (var i = 1; i < numberOfCols + 1; i++)
+    {
+        cols.Add(100 * (Math.Log(i + 1, numberOfCols + 1) - Math.Log(i, numberOfCols + 1)));
+        total += Math.Log(i + 1, numberOfCols + 1) - Math.Log(i, numberOfCols + 1);
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logarithmic scale</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+            table tr td {
+                border: 1px solid #eee;
+                padding: .5em;
+            }
+
+        .col {
+            display: inline-block;
+            float: left;
+            background-color: #f00;
+            box-sizing: border-box;
+            border-right: 1px solid #fff;
+            color: #fff;
+            margin: 0;
+            padding: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    @for (var i = 0; i < numberOfCols; i++)
+    {
+        <div class="col" style="width:@(cols[i])%;">@(i + 1)</div>
+    }
+    <h1>Logarithmic scale c# example</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>column</td>
+                <td>startpoint</td>
+                <td>width</td>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td>totaal:</td>
+                <td>@total</td>
+                <td></td>
+            </tr>
+        </tfoot>
+        @for (var i = 0; i < numberOfCols; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@(Math.Log(i + 1, numberOfCols + 1))</td>
+                <td>@cols[i] %</td>
+            </tr>
+        }
+    </table>
+    @for (var i = 0; i < numberOfCols; i++)
+    {
+        <div class="col" style="width:@(cols[i])%;">@(i + 1)</div>
+    }
+</body>
+</html>
