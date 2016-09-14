@@ -1,9 +1,9 @@
 # VisualStudioCode #
 ###################
-C#/packages/*
-C#/.vs/*
-C#/bin/*
-C#/obj/*
+LogGrid/packages/*
+LogGrid/.vs/*
+LogGrid/bin/*
+LogGrid/obj/*
 
 
 # Compiled source #
