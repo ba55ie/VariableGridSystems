@@ -86,3 +86,47 @@ D:\-- My Documents --\GitHub\LogGrid\LogGrid\bin\System.Web.WebPages.Razor.xml
 D:\-- My Documents --\GitHub\LogGrid\LogGrid\obj\Debug\LogGrid.csprojResolveAssemblyReference.cache
 D:\-- My Documents --\GitHub\LogGrid\LogGrid\obj\Debug\LogGrid.dll
 D:\-- My Documents --\GitHub\LogGrid\LogGrid\obj\Debug\LogGrid.pdb
+C:\vicompany\repositories\LogGrid\LogGrid\bin\ApplicationInsights.config
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\csc.exe
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\System.Collections.Immutable.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\System.Reflection.Metadata.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\vbc.exe
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\VBCSCompiler.exe
+C:\vicompany\repositories\LogGrid\LogGrid\bin\roslyn\VBCSCompiler.exe.config
+C:\vicompany\repositories\LogGrid\LogGrid\bin\LogGrid.dll.config
+C:\vicompany\repositories\LogGrid\LogGrid\bin\LogGrid.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\LogGrid.pdb
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.Agent.Intercept.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.DependencyCollector.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.Web.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.WindowsServer.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.ApplicationInsights.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.Web.Infrastructure.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.Helpers.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.Razor.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.WebPages.Deployment.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.WebPages.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.WebPages.Razor.dll
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.DependencyCollector.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.Web.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.AI.WindowsServer.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.ApplicationInsights.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.Helpers.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.Razor.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.WebPages.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.WebPages.Deployment.xml
+C:\vicompany\repositories\LogGrid\LogGrid\bin\System.Web.WebPages.Razor.xml
+C:\vicompany\repositories\LogGrid\LogGrid\obj\Debug\LogGrid.csprojResolveAssemblyReference.cache
+C:\vicompany\repositories\LogGrid\LogGrid\obj\Debug\LogGrid.dll
+C:\vicompany\repositories\LogGrid\LogGrid\obj\Debug\LogGrid.pdb
