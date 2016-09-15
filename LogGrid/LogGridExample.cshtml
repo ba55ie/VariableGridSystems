@@ -3,8 +3,8 @@
     System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
     customCulture.NumberFormat.NumberDecimalSeparator = ".";
     System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
     int numberOfCols = 8;
-    double logScale = 1.61803398875;
     List<double> cols = new List<double> { };
     double total = 0;
 
@@ -41,6 +41,7 @@
             color: white;
             box-sizing: border-box;
             border-right: 1px solid #FFF;
+            border-bottom: 1px solid #FFF;
             margin: 0;
             padding: 0.25rem;
         }
@@ -62,14 +63,22 @@
         <input name="cols" id="cols" value="@numberOfCols" />
         <input type="submit" />
     </form>
-    <br /><br />
-    @for (var i = 0; i < numberOfCols; i++)
-    {
-        <div class="col" style="width:@(cols[i])%;">@(i + 1)</div>
-    }
     <br />
+    <div style="width:100%; display: block; clear: both;">
+        @for (var i = 0; i < numberOfCols; i++)
+        {
+            <div class="col" style="width:@(cols[i])%;">@(i + 1)</div>
+        }
+    </div>
     <br />
-    <table>
+    <div style="width:100%; display: block; clear: both;">
+        @for (var i = numberOfCols; i > 0; i--)
+        {
+            <div class="col" style="width:@(cols[i-1])%;">@(i)</div>
+        }
+    </div>
+
+    <table style="display: block; clear: both;">
         <thead>
             <tr>
                 <td><b>col</b></td>
