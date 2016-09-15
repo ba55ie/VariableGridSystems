@@ -44,11 +44,11 @@ local.properties
 *.csproj
 *.user
 
-LogGrid/packages/
+packages/
 LogGrid/LogGrid/bin/
 LogGrid/LogGrid/obj/
 LogGrid/LogGrid/Properties/
-LogGrid/LogGrid/scripts/
+LogGrid/scripts/
 
 # Build results
 
