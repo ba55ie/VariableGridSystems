@@ -44,10 +44,11 @@ local.properties
 *.csproj
 *.user
 
-C#/packages/
-C#/PieChart/bin/
-C#/PieChart/obj/
-C#/PieChart/Properties/
+LogGrid/packages/
+LogGrid/LogGrid/bin/
+LogGrid/LogGrid/obj/
+LogGrid/LogGrid/Properties/
+LogGrid/LogGrid/scripts/
 
 # Build results
 
