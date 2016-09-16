@@ -1,4 +1,39 @@
-body {
-    margin: 0;
-    padding: 0;
+/*
+SET VARIABLES
+*/
+
+//set the minimal column widht and the amount of columns there need to be
+$min-width-column: 5%;
+$column-amount: 6;
+
+//calculate width that needs to be filled by extra columns
+$rest-width: 100% - ($column-amount * $min-width-column);
+
+//calculate the number of extra columns needed to fill out the total width
+$extra-columns: $column-amount * (($column-amount - 1)/2);
+$extra-column-width: $rest-width / $extra-columns;
+
+/*
+DEFINE THE ROW
+*/
+.row {
+    position: relative;
+}
+
+/*
+DEFINE THE COLUMNS
+*/
+
+$class-prefix: col;
+
+@for $i from 1 through $column-amount {
+    //calculate the width
+    $this-column-width: $min-width-column + ($i - 1) * $extra-column-width;
+
+    .#{$class-prefix}-#{$i} {
+        float: left;
+        width: $this-column-width;
+        background: yellow;
+        outline: 1px solid red;
+    }
 }

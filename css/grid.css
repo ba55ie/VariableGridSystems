@@ -1,3 +1,47 @@
-body {
-  margin: 0;
-  padding: 0; }
+/*
+SET VARIABLES
+*/
+/*
+DEFINE THE ROW
+*/
+.row {
+  position: relative; }
+
+/*
+DEFINE THE COLUMNS
+*/
+.col-1 {
+  float: left;
+  width: 5%;
+  background: yellow;
+  outline: 1px solid red; }
+
+.col-2 {
+  float: left;
+  width: 9.66667%;
+  background: yellow;
+  outline: 1px solid red; }
+
+.col-3 {
+  float: left;
+  width: 14.33333%;
+  background: yellow;
+  outline: 1px solid red; }
+
+.col-4 {
+  float: left;
+  width: 19%;
+  background: yellow;
+  outline: 1px solid red; }
+
+.col-5 {
+  float: left;
+  width: 23.66667%;
+  background: yellow;
+  outline: 1px solid red; }
+
+.col-6 {
+  float: left;
+  width: 28.33333%;
+  background: yellow;
+  outline: 1px solid red; }
