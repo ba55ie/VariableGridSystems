@@ -14,6 +14,13 @@ $extra-columns: $column-amount * (($column-amount - 1)/2);
 $extra-column-width: $rest-width / $extra-columns;
 
 /*
+DEFINE FUNCTIONS
+*/
+@function calculate-width($counter: $counter) {
+    @return $min-width-column + ($counter - 1) * $extra-column-width;
+}
+
+/*
 DEFINE THE DEFAULT ROW & COL
 */
 .row {
@@ -38,7 +45,7 @@ $class-prefix: cell;
 
 @for $i from 1 through $column-amount {
     //calculate the width
-    $this-column-width: $min-width-column + ($i - 1) * $extra-column-width;
+    $this-column-width: calculate-width($i);
 
     .#{$class-prefix}-#{$i} {
         width: $this-column-width;
@@ -61,6 +68,3 @@ $class-prefix: cell;
     }
 }
 
-@function calculate-width($counter) {
-    @return ($min-width-column + ($counter - 1) * $extra-column-width);
-}
