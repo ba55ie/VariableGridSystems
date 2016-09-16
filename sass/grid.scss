@@ -6,6 +6,8 @@ SET VARIABLES
 $min-width-column: 5%;
 $column-amount: 6;
 
+
+
 //calculate width that needs to be filled by extra columns
 $rest-width: 100% - ($column-amount * $min-width-column);
 
@@ -24,7 +26,7 @@ DEFINE THE ROW
 DEFINE THE COLUMNS
 */
 
-$class-prefix: col;
+$class-prefix: cell;
 
 @for $i from 1 through $column-amount {
     //calculate the width

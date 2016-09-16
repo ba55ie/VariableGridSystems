@@ -10,37 +10,37 @@ DEFINE THE ROW
 /*
 DEFINE THE COLUMNS
 */
-.col-1 {
+.cell-1 {
   float: left;
   width: 5%;
   background: yellow;
   outline: 1px solid red; }
 
-.col-2 {
+.cell-2 {
   float: left;
   width: 9.66667%;
   background: yellow;
   outline: 1px solid red; }
 
-.col-3 {
+.cell-3 {
   float: left;
   width: 14.33333%;
   background: yellow;
   outline: 1px solid red; }
 
-.col-4 {
+.cell-4 {
   float: left;
   width: 19%;
   background: yellow;
   outline: 1px solid red; }
 
-.col-5 {
+.cell-5 {
   float: left;
   width: 23.66667%;
   background: yellow;
   outline: 1px solid red; }
 
-.col-6 {
+.cell-6 {
   float: left;
   width: 28.33333%;
   background: yellow;
