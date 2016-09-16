@@ -2,46 +2,113 @@
 SET VARIABLES
 */
 /*
-DEFINE THE ROW
+DEFINE THE DEFAULT ROW & COL
 */
 .row {
   position: relative; }
+
+.cell {
+  background: lightslategray;
+  outline: 1px solid white;
+  float: left; }
 
 /*
 DEFINE THE COLUMNS
 */
 .cell-1 {
-  float: left;
-  width: 5%;
-  background: yellow;
-  outline: 1px solid red; }
+  width: 5%; }
+
+.cell-1-1 {
+  background: lightgray;
+  width: 5%; }
+
+.cell-1-2 {
+  background: lightgray;
+  width: 14.66667%; }
+
+.cell-1-3 {
+  background: lightgray;
+  width: 29%; }
+
+.cell-1-4 {
+  background: lightgray;
+  width: 48%; }
+
+.cell-1-5 {
+  background: lightgray;
+  width: 71.66667%; }
+
+.cell-1-6 {
+  background: lightgray;
+  width: 100%; }
 
 .cell-2 {
-  float: left;
-  width: 9.66667%;
-  background: yellow;
-  outline: 1px solid red; }
+  width: 9.66667%; }
+
+.cell-2-2 {
+  background: lightgray;
+  width: 9.66667%; }
+
+.cell-2-3 {
+  background: lightgray;
+  width: 24%; }
+
+.cell-2-4 {
+  background: lightgray;
+  width: 43%; }
+
+.cell-2-5 {
+  background: lightgray;
+  width: 66.66667%; }
+
+.cell-2-6 {
+  background: lightgray;
+  width: 95%; }
 
 .cell-3 {
-  float: left;
-  width: 14.33333%;
-  background: yellow;
-  outline: 1px solid red; }
+  width: 14.33333%; }
+
+.cell-3-3 {
+  background: lightgray;
+  width: 14.33333%; }
+
+.cell-3-4 {
+  background: lightgray;
+  width: 33.33333%; }
+
+.cell-3-5 {
+  background: lightgray;
+  width: 57%; }
+
+.cell-3-6 {
+  background: lightgray;
+  width: 85.33333%; }
 
 .cell-4 {
-  float: left;
-  width: 19%;
-  background: yellow;
-  outline: 1px solid red; }
+  width: 19%; }
+
+.cell-4-4 {
+  background: lightgray;
+  width: 19%; }
+
+.cell-4-5 {
+  background: lightgray;
+  width: 42.66667%; }
+
+.cell-4-6 {
+  background: lightgray;
+  width: 71%; }
 
 .cell-5 {
-  float: left;
-  width: 23.66667%;
-  background: yellow;
-  outline: 1px solid red; }
+  width: 23.66667%; }
+
+.cell-5-5 {
+  background: lightgray;
+  width: 23.66667%; }
+
+.cell-5-6 {
+  background: lightgray;
+  width: 52%; }
 
 .cell-6 {
-  float: left;
-  width: 28.33333%;
-  background: yellow;
-  outline: 1px solid red; }
+  width: 28.33333%; }

@@ -16,10 +16,16 @@ $extra-columns: $column-amount * (($column-amount - 1)/2);
 $extra-column-width: $rest-width / $extra-columns;
 
 /*
-DEFINE THE ROW
+DEFINE THE DEFAULT ROW & COL
 */
 .row {
     position: relative;
+}
+
+.cell {
+    background: lightslategray;
+    outline: 1px solid white;
+    float: left;
 }
 
 /*
@@ -33,9 +39,22 @@ $class-prefix: cell;
     $this-column-width: $min-width-column + ($i - 1) * $extra-column-width;
 
     .#{$class-prefix}-#{$i} {
-        float: left;
         width: $this-column-width;
-        background: yellow;
-        outline: 1px solid red;
+    }
+
+    $k: $i + 1;
+    @if $i < $column-amount {
+        //reset the span width
+        $span-width: 0;
+        
+        @for $j from ($k - 1) through $column-amount {
+            //calculate the spanned width
+            $span-width: $span-width + $min-width-column + ($j - 1) * $extra-column-width;
+
+            .#{$class-prefix}-#{$i}-#{$j} {
+                background: lightgray;
+                width: $span-width;
+            }
+        }        
     }
 }
