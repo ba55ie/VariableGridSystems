@@ -1,0 +1,29 @@
+{
+  "name": "loggrid",
+  "version": "1.0.0",
+  "description": "a grid system with increasing column widths",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruudrenssen/LogGrid.git"
+  },
+  "keywords": [
+    "grid",
+    "columns",
+    "exponential"
+  ],
+  "author": "Ruud Renssen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruudrenssen/LogGrid/issues"
+  },
+  "homepage": "https://github.com/ruudrenssen/LogGrid#readme"
+}
