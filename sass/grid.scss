@@ -3,8 +3,8 @@ SET VARIABLES
 */
 
 //set the minimal column widht and the amount of columns there need to be
-$min-width-column: 5%;
 $column-amount: 6;
+$min-width-column: 4%;
 
 
 
@@ -20,12 +20,16 @@ DEFINE THE DEFAULT ROW & COL
 */
 .row {
     position: relative;
+    clear:both;
 }
 
 .cell {
     background: lightslategray;
     outline: 1px solid white;
     float: left;
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    color: white;
 }
 
 /*
