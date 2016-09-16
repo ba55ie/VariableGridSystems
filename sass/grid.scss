@@ -4,9 +4,7 @@ SET VARIABLES
 
 //set the minimal column widht and the amount of columns there need to be
 $column-amount: 6;
-$min-width-column: 4%;
-
-
+$min-width-column: 2.5%;
 
 //calculate width that needs to be filled by extra columns
 $rest-width: 100% - ($column-amount * $min-width-column);
@@ -61,4 +59,8 @@ $class-prefix: cell;
             }
         }        
     }
+}
+
+@function calculate-width($counter) {
+    @return ($min-width-column + ($counter - 1) * $extra-column-width);
 }
