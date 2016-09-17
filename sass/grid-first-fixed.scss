@@ -1,0 +1,70 @@
+/*
+SET VARIABLES
+*/
+
+//set the minimal column widht and the amount of columns there need to be
+$column-amount: 6;
+$min-width-column: 2.5%;
+
+//calculate width that needs to be filled by extra columns
+$rest-width: 100% - ($column-amount * $min-width-column);
+
+//calculate the number of extra columns needed to fill out the total width
+$extra-columns: $column-amount * (($column-amount - 1)/2);
+$extra-column-width: $rest-width / $extra-columns;
+
+/*
+DEFINE FUNCTIONS
+*/
+@function calculate-width($counter: $counter) {
+    @return $min-width-column + ($counter - 1) * $extra-column-width;
+}
+
+/*
+DEFINE THE DEFAULT ROW & COL
+*/
+.row {
+    position: relative;
+    clear:both;
+}
+
+.cell {
+    background: lightslategray;
+    outline: 1px solid white;
+    float: left;
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    color: white;
+}
+
+/*
+DEFINE THE COLUMNS
+*/
+
+$class-prefix: cell;
+
+@for $i from 1 through $column-amount {
+    //calculate the width
+    $this-column-width: calculate-width($i);
+
+    .#{$class-prefix}-#{$i} {
+        width: $this-column-width;
+    }
+
+    $k: $i + 1;
+    @if $i < $column-amount {
+        //reset the span width
+        $span-width: 0;
+        
+        @for $j from ($k - 1) through $column-amount {
+            //calculate the spanned width
+            $span-width: $span-width + calculate-width($j);;
+
+            .#{$class-prefix}-#{$i}-#{$j} {
+                background: lightgray;
+                width: $span-width;
+            }
+        }        
+    }
+}
+
