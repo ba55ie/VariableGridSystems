@@ -1,23 +1,42 @@
 /*
-SET VARIABLES
+VARIABLES
 */
 
 //user variables grid system
 $column-amount: 6;
 $gutter-width: 1rem;
-$bleed: true;
+
+//breakpoints
+$breakpoints: (
+  xs: 32rem,
+  s: 48rem,
+  m: 72rem,
+  l: 96rem,
+  xl: 102rem
+);
+
+/*
+MIXINS
+*/
+@mixin break($size) {  
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+/*
+FUNCTIONS
+*/
+@function calculate-width($counter: $counter) {
+    @return ($counter) * $extra-column-width;
+}
+
 
 //calculate the number of extra columns needed to fill out the total width
 $total-width: 100%;
 $extra-columns: $column-amount * (($column-amount + 1)/2);
 $extra-column-width: $total-width / $extra-columns;
 
-/*
-DEFINE FUNCTIONS
-*/
-@function calculate-width($counter: $counter) {
-    @return ($counter) * $extra-column-width;
-}
 
 /*
 DEFINE THE DEFAULT ROW & COL
@@ -47,25 +66,6 @@ DEFINE THE DEFAULT ROW & COL
         font-family: sans-serif;
         font-size: 1.25rem;
     }
-    
-    @if($bleed) {
-        [class*='cell-']:last-of-type {
-            padding-right: 0;
-        }
-
-        [class*='cell-']:first-of-type {
-            padding-left: 0;
-        }
-    }
-    @else {
-        [class*='cell-']:last-of-type {
-            padding-right: $gutter-width;
-        }
-
-        [class*='cell-']:first-of-type {
-            padding-left: $gutter-width;
-        }
-    } 
 }
 
 
@@ -74,28 +74,36 @@ DEFINE THE COLUMNS
 */
 
 $class-prefix: cell;
+@each $key, $value in $breakpoints {
+    @for $i from 1 through $column-amount {
+        //calculate the width
+        $this-column-width: calculate-width($i);
 
-@for $i from 1 through $column-amount {
-    //calculate the width
-    $this-column-width: calculate-width($i);
-
-    .#{$class-prefix}-#{$i} {
-        width: $this-column-width;
-    }
-
-    $k: $i + 1;
-    @if $i < $column-amount {
-        //reset the span width
-        $span-width: 0;
+        .#{$class-prefix}--#{$i} {
+            width: $this-column-width;
+        }
         
-        @for $j from ($k - 1) through $column-amount {
-            //calculate the spanned width
-            $span-width: $span-width + calculate-width($j);;
+        .#{$class-prefix}--#{$key}-#{$i} {
+            width: $this-column-width;
+        }
 
-            .#{$class-prefix}-#{$i}-#{$j} {
-                width: $span-width;
-            }
-        }        
+        $k: $i + 1;
+        @if $i < $column-amount {
+            //reset the span width
+            $span-width: 0;
+            
+            @for $j from ($k) through $column-amount - 1 {
+                //calculate the spanned width
+                $span-width: $span-width + calculate-width($j);;
+
+                .#{$class-prefix}--#{$i}-#{$j} {
+                    width: $span-width;
+                }
+                
+                .#{$class-prefix}--#{$key}-#{$i}-#{$j} {
+                    width: $span-width;
+                }
+            }        
+        }
     }
 }
-
