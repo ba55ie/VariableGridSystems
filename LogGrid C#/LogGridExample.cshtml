@@ -1,0 +1,115 @@
+﻿@{
+    //set dot for decimal seperator
+    System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+    customCulture.NumberFormat.NumberDecimalSeparator = ".";
+    System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
+    int numberOfCols = 8;
+    List<double> cols = new List<double> { };
+    double total = 0;
+
+    //fetch cols
+    if (IsPost)
+    {
+        numberOfCols = Int32.Parse(Request.Form["cols"]);
+    }
+
+    //set sol width based on number of columns
+    for (var i = 1; i < numberOfCols + 1; i++)
+    {
+        cols.Add(100 * (Math.Log(i + 1, numberOfCols + 1) - Math.Log(i, numberOfCols + 1)));
+        total += Math.Log(i + 1, numberOfCols + 1) - Math.Log(i, numberOfCols + 1);
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logarithmic scale</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .col {
+            display: inline-block;
+            float: left;
+            background-color: #F00;
+            color: white;
+            box-sizing: border-box;
+            border-right: 1px solid #FFF;
+            border-bottom: 1px solid #FFF;
+            margin: 0;
+            padding: 0.25rem;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 0.5rem;
+            border: 1px solid #EEE;
+        }
+    </style>
+</head>
+<body>
+    <h1>Logarithmic grid: @numberOfCols</h1>
+    <form method="post" action="LogGridExample.cshtml">
+        <label for="cols">Amount of cols:</label>
+        <input name="cols" id="cols" value="@numberOfCols" />
+        <input type="submit" />
+    </form>
+    <br />
+    <div style="width:100%; display: block; clear: both;">
+        @for (var i = 0; i < numberOfCols; i++)
+        {
+            <div class="col" style="width:@(cols[i])%;">@(i + 1)</div>
+        }
+    </div>
+    <br />
+    <div style="width:100%; display: block; clear: both;">
+        @for (var i = numberOfCols; i > 0; i--)
+        {
+            <div class="col" style="width:@(cols[i-1])%;">@(i)</div>
+        }
+    </div>
+
+    <table style="display: block; clear: both;">
+        <thead>
+            <tr>
+                <td><b>col</b></td>
+                <td><b>start value factor</b></td>
+                <td><b>col width percentage</b></td>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td><b>totaal:</b></td>
+                <td><b>@total</b></td>
+                <td><b>@(total * 100) %</b></td>
+            </tr>
+        </tfoot>
+        @for (var i = 0; i < numberOfCols; i++)
+        {
+            <tr>
+                <td>@(i + 1)</td>
+                <td>@(Math.Log(i + 1, numberOfCols + 1))</td>
+                <td>@cols[i] %</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <h2>To-do</h2>
+    <ul>
+        <li>Volgorde kolommen omdraaien (klein naar groot)</li>
+        <li>Kolommen samenvoegen</li>
+        <li>Start of eind breedte instellen</li>
+        <li>Factor instellen</li>
+        <li>berekeningen in sass</li>
+    </ul>
+</body>
+</html>
