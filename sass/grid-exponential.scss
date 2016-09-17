@@ -5,12 +5,12 @@ SET VARIABLES
 //set the minimal column widht and the amount of columns there need to be
 $column-amount: 6;
 
-//calculate width that needs to be filled by extra columns
-$width: 100%;
+//set the total width
+$total-width: 100%;
 
 //calculate the number of extra columns needed to fill out the total width
 $extra-columns: $column-amount * (($column-amount + 1)/2);
-$extra-column-width: $width / $extra-columns;
+$extra-column-width: $total-width / $extra-columns;
 
 /*
 DEFINE FUNCTIONS
