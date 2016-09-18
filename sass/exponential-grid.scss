@@ -1,0 +1,101 @@
+/*
+VARIABLES
+*/
+
+//user variables grid system
+$column-amount: 6;
+$factor: 2.1544346900318837217592935665194; //f = n-root of width (in which n = amount of columns)
+$gutter-width: 1rem;
+$bleed: false;
+
+//breakpoints
+$breakpoints: (
+  xs: 32rem,
+  s: 48rem,
+  m: 72rem,
+  l: 96rem,
+  xl: 102rem
+);
+
+/*
+DEFINE THE DEFAULT ROW & COLUMN
+*/
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.grid {
+    padding: 0 ($gutter-width/2);
+    @if($bleed == false) {
+        margin: 0 -$gutter-width/2;
+    }
+}
+
+.row {
+    display: block;
+    position: relative;
+    clear:both;
+    margin: 0 (-$gutter-width/2);
+
+    
+    .cell {
+        box-sizing: border-box;
+        position: relative;
+        padding: 0 ($gutter-width/2);
+        margin: 0;
+        float: left;
+    }
+}
+
+/*
+MIXINS
+*/
+@mixin break($size) {  
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+/*
+FUNCTIONS
+*/
+@function calculate-width($counter: $counter) {
+    
+}
+
+/*
+DEFINE THE COLUMNS
+*/
+
+//calculate the number of extra columns needed to fill out the total width
+$class-prefix: cell;
+$total-width: 0;
+$column-width: $factor;
+
+@for $i from 1 through $column-amount {
+    //calculate the width
+    @if($i == 1) {
+        $column-width: $factor;
+        $total-width: $column-width;
+        $cssvalue: $column-width * 1%; 
+        @debug $column-width;
+        
+        .#{$class-prefix}--#{$i} {
+            width: $cssvalue;
+        }
+    }@else{
+        $column-width: $column-width * $factor;
+        $new-column-width: $column-width - $prev-column-width;
+        $cssvalue: $new-column-width * 1%;
+        $total-width: $total-width + $new-column-width;
+        @debug $new-column-width;
+        
+        .#{$class-prefix}--#{$i} {
+            width: $cssvalue;
+        }
+    }
+    $prev-column-width: $column-width;
+}
+@debug $total-width;
