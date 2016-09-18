@@ -2,13 +2,7 @@
 VARIABLES
 */
 /*
-MIXINS
-*/
-/*
-FUNCTIONS
-*/
-/*
-DEFINE THE DEFAULT ROW & COL
+DEFINE THE DEFAULT ROW & COLUMN
 */
 .container {
   max-width: 1400px;
@@ -31,6 +25,12 @@ DEFINE THE DEFAULT ROW & COL
     margin: 0;
     float: left; }
 
+/*
+MIXINS
+*/
+/*
+FUNCTIONS
+*/
 /*
 DEFINE THE COLUMNS
 */
