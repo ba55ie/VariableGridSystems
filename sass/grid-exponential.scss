@@ -63,8 +63,6 @@ DEFINE THE DEFAULT ROW & COL
         padding: 0 ($gutter-width/2);
         margin: 0;
         float: left;
-        font-family: sans-serif;
-        font-size: 1.25rem;
     }
 }
 
@@ -72,36 +70,57 @@ DEFINE THE DEFAULT ROW & COL
 /*
 DEFINE THE COLUMNS
 */
-
 $class-prefix: cell;
+
+@for $i from 1 through $column-amount {
+    //calculate the width
+    $this-column-width: calculate-width($i);
+
+    .#{$class-prefix}--#{$i} {
+        width: $this-column-width;
+    }
+
+    $k: $i;
+    @if $i < $column-amount {
+        //reset the span width
+        $span-width: 0;
+        
+        @for $j from ($k) through $column-amount {
+            //calculate the spanned width
+            $span-width: $span-width + calculate-width($j);;
+
+            .#{$class-prefix}--#{$i}-#{$j} {
+                width: $span-width;
+            }
+        }        
+    }
+}
+
 @each $key, $value in $breakpoints {
     @for $i from 1 through $column-amount {
         //calculate the width
         $this-column-width: calculate-width($i);
 
-        .#{$class-prefix}--#{$i} {
-            width: $this-column-width;
-        }
-        
         .#{$class-prefix}--#{$key}-#{$i} {
-            width: $this-column-width;
+            @include break($key) {
+                width: $this-column-width;
+            }
         }
 
-        $k: $i + 1;
+        $k: $i;
         @if $i < $column-amount {
             //reset the span width
             $span-width: 0;
             
-            @for $j from ($k) through $column-amount - 1 {
+            @for $j from ($k) through $column-amount {
                 //calculate the spanned width
                 $span-width: $span-width + calculate-width($j);;
-
-                .#{$class-prefix}--#{$i}-#{$j} {
-                    width: $span-width;
-                }
-                
-                .#{$class-prefix}--#{$key}-#{$i}-#{$j} {
-                    width: $span-width;
+                @if ($i != $j) {
+                    .#{$class-prefix}--#{$key}-#{$i}-#{$j} {
+                        @include break($key) {
+                            width: $span-width;
+                        }
+                    }                    
                 }
             }        
         }
