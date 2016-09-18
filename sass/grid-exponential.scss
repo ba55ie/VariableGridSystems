@@ -44,10 +44,12 @@ DEFINE THE DEFAULT ROW & COL
 .container {
     max-width: 1400px;
     margin: 0 auto;
+    overflow-x: hidden;
 }
 
 .grid {
     padding: 0 ($gutter-width/2);
+    margin: 0 -$gutter-width/2;
 }
 
 .row {
