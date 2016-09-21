@@ -85,6 +85,7 @@ $column-width: $factor;
         .#{$class-prefix}--#{$i} {
             width: $cssvalue;
         }
+
     }@else{
         $column-width: $column-width * $factor;
         $new-column-width: $column-width - $prev-column-width;
@@ -95,7 +96,10 @@ $column-width: $factor;
         .#{$class-prefix}--#{$i} {
             width: $cssvalue;
         }
+
     }
+
+    //store the previous column width
     $prev-column-width: $column-width;
 }
 @debug $total-width;
