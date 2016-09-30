@@ -1,12 +1,16 @@
-/*
-VARIABLES
-*/
+/* ------- VARIABLES ------- */
 
 //user variables grid system
-$column-amount: 6;
-$factor: 2.1544346900318837217592935665194; //f = n-root of width (in which n = amount of columns)
+$columns: 6;
+$minimum-column-width: 25;
+$multiplier: 2;
 $gutter-width: 1rem;
 $bleed: false;
+
+//system variables
+$class-prefix: cell;
+$total-width: 189;
+$first-column-width: 0;
 
 //breakpoints
 $breakpoints: (
@@ -17,89 +21,32 @@ $breakpoints: (
   xl: 102rem
 );
 
-/*
-DEFINE THE DEFAULT ROW & COLUMN
-*/
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    overflow-x: hidden;
-}
-
-.grid {
-    padding: 0 ($gutter-width/2);
-    @if($bleed == false) {
-        margin: 0 -$gutter-width/2;
+/* ------- FUNCTIONS ------- */
+@function power-of($base: $base, $exponent: $exponent) {
+    //calculates the power of the given base and exponent
+    $return-value: 0;
+    @if ($exponent == 0) {
+        $return-value: 1;
+    }@else if ($exponent == 1) {
+        $return-value: $base;
     }
-}
-
-.row {
-    display: block;
-    position: relative;
-    clear:both;
-    margin: 0 (-$gutter-width/2);
-
-    
-    .cell {
-        box-sizing: border-box;
-        position: relative;
-        padding: 0 ($gutter-width/2);
-        margin: 0;
-        float: left;
-    }
-}
-
-/*
-MIXINS
-*/
-@mixin break($size) {  
-    @media (min-width: map-get($breakpoints, $size)) {
-        @content;
-    }
-}
-
-/*
-FUNCTIONS
-*/
-@function calculate-width($counter: $counter) {
-    
-}
-
-/*
-DEFINE THE COLUMNS
-*/
-
-//calculate the number of extra columns needed to fill out the total width
-$class-prefix: cell;
-$total-width: 0;
-$column-width: $factor;
-
-@for $i from 1 through $column-amount {
-    //calculate the width
-    @if($i == 1) {
-        $column-width: $factor;
-        $total-width: $column-width;
-        $cssvalue: $column-width * 1%; 
-        @debug $column-width;
-        
-        .#{$class-prefix}--#{$i} {
-            width: $cssvalue;
+    @else {
+        $return-value: $base;
+        @for $i from 2 through $exponent {
+            $return-value: $return-value * $base;
         }
-
-    }@else{
-        $column-width: $column-width * $factor;
-        $new-column-width: $column-width - $prev-column-width;
-        $cssvalue: $new-column-width * 1%;
-        $total-width: $total-width + $new-column-width;
-        @debug $new-column-width;
-        
-        .#{$class-prefix}--#{$i} {
-            width: $cssvalue;
-        }
-
     }
 
-    //store the previous column width
-    $prev-column-width: $column-width;
+    @return $return-value;
 }
-@debug $total-width;
+
+/* ------- CALCULATIONS ------- */
+$first-column-width: $total-width / (power-of($multiplier , $columns) - 1);
+
+/* ------- GENERATE CSS ------- */
+@for $i from 1 through $columns { 
+    $current-column-width: $first-column-width * (power-of($multiplier, ($i - 1 )));
+    @debug "column "+ $i + " width: "  + ": " + $current-column-width;
+}
+$total: $first-column-width  * (power-of($multiplier , $columns) - 1); 
+@debug "total: " + $total;
