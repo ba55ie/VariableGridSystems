@@ -44,9 +44,13 @@ $breakpoints: (
 $first-column-width: $total-width / (power-of($multiplier , $columns) - 1);
 
 /* ------- GENERATE CSS ------- */
+$cumulative: 0;
 @for $i from 1 through $columns { 
     $current-column-width: $first-column-width * (power-of($multiplier, ($i - 1 )));
+    $cumulative: $cumulative + $current-column-width; 
     @debug "column "+ $i + " width: "  + ": " + $current-column-width;
+
 }
 $total: $first-column-width  * (power-of($multiplier , $columns) - 1); 
 @debug "total: " + $total;
+@debug "cumulative: " + $cumulative;
