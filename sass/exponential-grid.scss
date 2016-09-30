@@ -2,10 +2,11 @@
 
 // user variables grid system
 $columns: 6;
-$minimum-column-width: 25;
 $multiplier: 2;
 $gutter-width: 1rem;
 $bleed: false;
+
+$minimum-column-width: 10; //not yet working!
 
 // system variables
 $class-prefix: cell;
@@ -20,6 +21,38 @@ $breakpoints: (
   l: 96rem,
   xl: 102rem
 );
+
+/*
+DEFINE THE DEFAULT ROW & COLUMN
+*/
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.grid {
+    padding: 0 ($gutter-width/2);
+    @if($bleed == false) {
+        margin: 0 -$gutter-width/2;
+    }
+}
+
+.row {
+    display: block;
+    position: relative;
+    clear:both;
+    margin: 0 (-$gutter-width/2);
+
+    
+    .cell {
+        box-sizing: border-box;
+        position: relative;
+        padding: 0 ($gutter-width/2);
+        margin: 0;
+        float: left;
+    }
+}
 
 /* ------- FUNCTIONS ------- */
 @function power-of($base: $base, $exponent: $exponent) {
@@ -45,19 +78,28 @@ $breakpoints: (
 $first-column-width: $total-width / (power-of($multiplier , $columns) - 1);
 
 /* ------- GENERATE CSS ------- */
-$cumulative: 0;
 @for $i from 1 through $columns {
     // calculate the current column width based on the first column
     $current-column-width: $first-column-width * (power-of($multiplier, ($i - 1)));
-    @debug "column "+ $i + " width: " + $current-column-width;
+    @debug "single column "+ $i + ":     " + $current-column-width;
+
+    .#{$class-prefix}--#{$i} {
+        width: $current-column-width * 1%;
+    }
 
     @if($i < $columns) {
         //set the initial span width: equal to the current column
         $span-width: $current-column-width;
         @for $j from $i + 1 through $columns {
             //add every next column to the span width
-            $span-width: $span-width + ($first-column-width * (power-of($multiplier, ($j - 1))));
-            @debug "merge cells: " + $i + " - " + $j + ": " + $span-width;
+            $span-width: ($span-width + $first-column-width * (power-of($multiplier, $j - 1)));
+            @debug "merge cells:  " + $i + " - " + $j + ": " + $span-width;
+
+            .#{$class-prefix}--#{$i}-#{$j} {
+                width: $span-width * 1%;
+            }
         }
     }
 }
+
+@debug "total: " + ($first-column-width * (power-of($multiplier, $columns) - 1));
