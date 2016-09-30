@@ -1,18 +1,18 @@
 /* ------- VARIABLES ------- */
 
-//user variables grid system
+// user variables grid system
 $columns: 6;
 $minimum-column-width: 25;
 $multiplier: 2;
 $gutter-width: 1rem;
 $bleed: false;
 
-//system variables
+// system variables
 $class-prefix: cell;
 $total-width: 189;
 $first-column-width: 0;
 
-//breakpoints
+// breakpoints
 $breakpoints: (
   xs: 32rem,
   s: 48rem,
@@ -23,16 +23,16 @@ $breakpoints: (
 
 /* ------- FUNCTIONS ------- */
 @function power-of($base: $base, $exponent: $exponent) {
-    //calculates the power of the given base and exponent
+    // calculates the power of the given base and exponent
     $return-value: 0;
     @if ($exponent == 0) {
-        //when the exponent is zero, the power is always 1
+        // when the exponent is zero, the power is always 1
         $return-value: 1;
     } @else if ($exponent == 1) {
-        //when the exponent is 1, the power is always the same as the base
+        // when the exponent is 1, the power is always the same as the base
         $return-value: $base;
     } @else {
-        //calculate the power with a loop
+        // calculate the power with a loop
         $return-value: $base;
         @for $i from 2 through $exponent {
             $return-value: $return-value * $base;
@@ -46,17 +46,18 @@ $first-column-width: $total-width / (power-of($multiplier , $columns) - 1);
 
 /* ------- GENERATE CSS ------- */
 $cumulative: 0;
-@for $i from 1 through $columns { 
+@for $i from 1 through $columns {
+    // calculate the current column width based on the first column
     $current-column-width: $first-column-width * (power-of($multiplier, ($i - 1)));
-    $cumulative: $cumulative + $current-column-width; 
-    @debug "column "+ $i + " width: "  + ": " + $current-column-width;
+    @debug "column "+ $i + " width: " + $current-column-width;
 
     @if($i < $columns) {
-        @for $j from $i through $columns - 1 {
-            @debug "merged cell: " + $j + " - " + $columns;
+        //set the initial span width: equal to the current column
+        $span-width: $current-column-width;
+        @for $j from $i + 1 through $columns {
+            //add every next column to the span width
+            $span-width: $span-width + ($first-column-width * (power-of($multiplier, ($j - 1))));
+            @debug "merge cells: " + $i + " - " + $j + ": " + $span-width;
         }
     }
 }
-$total: $first-column-width  * (power-of($multiplier , $columns) - 1); 
-@debug "total width: " + $total;
-@debug "cumulative width: " + $cumulative;
