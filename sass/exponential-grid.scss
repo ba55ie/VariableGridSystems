@@ -26,16 +26,18 @@ $breakpoints: (
     //calculates the power of the given base and exponent
     $return-value: 0;
     @if ($exponent == 0) {
+        //when the exponent is zero, the power is always 1
         $return-value: 1;
     } @else if ($exponent == 1) {
+        //when the exponent is 1, the power is always the same as the base
         $return-value: $base;
     } @else {
+        //calculate the power with a loop
         $return-value: $base;
         @for $i from 2 through $exponent {
             $return-value: $return-value * $base;
         }
     }
-
     @return $return-value;
 }
 
@@ -45,7 +47,7 @@ $first-column-width: $total-width / (power-of($multiplier , $columns) - 1);
 /* ------- GENERATE CSS ------- */
 $cumulative: 0;
 @for $i from 1 through $columns { 
-    $current-column-width: $first-column-width * (power-of($multiplier, ($i - 1 )));
+    $current-column-width: $first-column-width * (power-of($multiplier, ($i - 1)));
     $cumulative: $cumulative + $current-column-width; 
     @debug "column "+ $i + " width: "  + ": " + $current-column-width;
 
