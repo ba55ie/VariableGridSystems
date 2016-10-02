@@ -10,7 +10,6 @@ DEFINE THE DEFAULT ROW & COLUMN
 
 .row {
   display: block;
-  position: relative;
   clear: both;
   margin: 0 -13px; }
   .row .cell {

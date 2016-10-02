@@ -32,7 +32,6 @@ DEFINE THE DEFAULT ROW & COLUMN
 
 .row {
     display: block;
-    position: relative;
     clear:both;
     margin: 0 (-$gutter-width/2);
     
@@ -40,7 +39,7 @@ DEFINE THE DEFAULT ROW & COLUMN
         padding: 0;
         margin: 0 ($gutter-width/2);
         float: left;
-        min-height: .1px;
+        min-height: .1px; //fix this
     }
 }
 
@@ -73,7 +72,7 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
     }
 }
 
-//repeat procedure for media devices
+//repeat procedure for media devices (search for more efficient way)
 @each $key, $value in $breakpoints {
     @for $i from 1 through $columns {
         // calculate the current column width based on the first column

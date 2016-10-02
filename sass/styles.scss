@@ -1,35 +1,71 @@
 @import "variables";
 @import "functions";
 
+::selection {
+    color: #fefefe;
+    background-color: #313131;
+}
+
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #ed0c0c;
+    background-color: #182fb5;
+    font-family: 'Franklin Gothic Light', Arial, sans-serif;
+    color: #fefefe;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6  {
+    color: #fefefe;
+    font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1, .h1 {
     font-size: power-of($factor, 3) * 1rem;
     line-height: power-of($factor, 3) * 1rem;
-    color: #fefefe;
-    font-family: 'Franklin Gothic Heavy', 'Arial Narrow', Arial, sans-serif;
+}
+
+h2, .h2 {
+    font-size: power-of($factor, 2) * 1rem;
+    line-height: power-of($factor, 2) * 1rem;
+}
+
+h3, .h3 {
+    font-size: power-of($factor, 1) * 1rem;
+    line-height: power-of($factor, 1) * 1rem;
 }
 
 p {
-    font-family: 'Franklin Gothic Light', Arial, sans-serif;
     font-size: 1rem;
     line-height: power-of($factor, 1) * 1rem;
     color: #fefefe;
+    text-align: justify;
+    text-justify: inter-word;
+    hanging-punctuation: first;
+}
+
+a {
+    color: #fefefe;
+    text-decoration: none;
+    border-bottom: 2px solid #fefefe;
+    font-family: 'Franklin Gothic Heavy', 'Arial Narrow', Arial, sans-serif;
+
+    &:hover {
+        border: none;
+    }
+}
+
+ul {
+    padding-left: 1rem;
+    
 }
 
 .container {
     margin: 0 auto;
     overflow-x: hidden;
-    background-image: url("/img/bg-golden-ratio.svg");
 }
 
-.content-container {
+.divider {
     background-color: #fefefe;
-    font-size: 1rem;
-    font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
-    padding: .25rem;
+    margin-top: power-of($factor, 2) * 1rem;
+    height: 1rem;
 }
