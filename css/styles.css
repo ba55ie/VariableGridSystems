@@ -1,22 +1,28 @@
 /* ------- FUNCTIONS ------- */
 html, body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: #ed0c0c; }
 
 h1 {
   font-size: 4.25153rem;
   line-height: 4.25153rem;
-  color: #313131;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+  color: #fefefe;
+  font-family: 'Franklin Gothic Heavy', 'Arial Narrow', Arial, sans-serif; }
+
+p {
+  font-family: 'Franklin Gothic Light', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.62rem;
+  color: #fefefe; }
 
 .container {
   margin: 0 auto;
   overflow-x: hidden;
-  background-image: url("img/bg-golden-ratio.svg"); }
+  background-image: url("/img/bg-golden-ratio.svg"); }
 
 .content-container {
-  background-color: #313131;
-  color: #EFEFEF;
+  background-color: #fefefe;
   font-size: 1rem;
   font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
   padding: .25rem; }
