@@ -5,8 +5,7 @@ $columns: 6;
 $multiplier: 1.62;
 $gutter-width: 26px;
 $minimum-column-width: 5;
-
-$bleed: false; //not yet working!
+$bleed: true;
 
 // system variables
 $class-prefix: cell;
@@ -34,8 +33,11 @@ DEFINE THE DEFAULT ROW & COLUMN
 
 .grid {
     padding: 0 ($gutter-width/2);
-    @if($bleed == false) {
-        margin: 0 -$gutter-width/2;
+    
+    @if($bleed) {
+        margin: 0 (-$gutter-width/2);
+    }@else{
+        margin: 0;
     }
 }
 
@@ -47,9 +49,7 @@ DEFINE THE DEFAULT ROW & COLUMN
 
     
     .cell {
-        position: relative;
         box-sizing: border-box;
-        min-width: 0;
         padding: 0;
         margin: 0 ($gutter-width/2);
         float: left;
@@ -85,9 +85,7 @@ DEFINE THE DEFAULT ROW & COLUMN
         @content;
     }
 }
-@mixin calc($property, $expression) { 
-  #{$property}: -webkit-calc(#{$expression}); 
-  #{$property}: -moz-calc(#{$expression});
+@mixin calc($property, $expression) {
   #{$property}: calc(#{$expression}); 
 } 
 
