@@ -1,0 +1,6 @@
+/* ------- MIXINS ------- */
+@mixin break($size) {  
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}

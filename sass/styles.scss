@@ -1,10 +1,22 @@
+@import "variables";
+@import "functions";
+
 html, body {
     margin: 0;
     padding: 0;
 }
 
 h1 {
+    font-size: power-of($factor, 3) * 1rem;
+    line-height: power-of($factor, 3) * 1rem;
+    color: #313131;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    overflow-x: hidden;
+    background-image: url("img/bg-golden-ratio.svg");
 }
 
 .content-container {

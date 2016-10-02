@@ -1,15 +1,12 @@
+/* ------- FUNCTIONS ------- */
+/* ------- MIXINS ------- */
 /* ------- VARIABLES ------- */
 /*
 DEFINE THE DEFAULT ROW & COLUMN
 */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  overflow-x: hidden; }
-
 .grid {
   padding: 0 13px;
-  margin: 0 -13px; }
+  margin: 0 13px; }
 
 .row {
   display: block;
@@ -17,13 +14,11 @@ DEFINE THE DEFAULT ROW & COLUMN
   clear: both;
   margin: 0 -13px; }
   .row .cell {
-    box-sizing: border-box;
     padding: 0;
     margin: 0 13px;
-    float: left; }
+    float: left;
+    min-height: .1px; }
 
-/* ------- FUNCTIONS ------- */
-/* ------- MIXINS ------- */
 /* ------- CALCULATIONS ------- */
 /* ------- GENERATE CSS ------- */
 .cell--1 {

@@ -1,9 +1,18 @@
+/* ------- FUNCTIONS ------- */
 html, body {
   margin: 0;
   padding: 0; }
 
 h1 {
+  font-size: 4.25153rem;
+  line-height: 4.25153rem;
+  color: #313131;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+
+.container {
+  margin: 0 auto;
+  overflow-x: hidden;
+  background-image: url("img/bg-golden-ratio.svg"); }
 
 .content-container {
   background-color: #313131;

@@ -1,13 +1,8 @@
+@import "functions";
+@import "mixins";
+@import "variables";
+
 /* ------- VARIABLES ------- */
-
-// user variables grid system
-$columns: 6;
-$multiplier: 1.62;
-$gutter-width: 26px;
-$minimum-column-width: 5;
-$bleed: true;
-
-// system variables
 $class-prefix: cell;
 $total-width: 100;
 $root-column: 0;
@@ -25,19 +20,13 @@ $breakpoints: (
 /*
 DEFINE THE DEFAULT ROW & COLUMN
 */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    overflow-x: hidden;
-}
-
 .grid {
     padding: 0 ($gutter-width/2);
     
     @if($bleed) {
-        margin: 0 (-$gutter-width/2);
+        margin: 0 ($gutter-width/2);
     }@else{
-        margin: 0;
+        margin: 0 (-$gutter-width/2);
     }
 }
 
@@ -46,48 +35,14 @@ DEFINE THE DEFAULT ROW & COLUMN
     position: relative;
     clear:both;
     margin: 0 (-$gutter-width/2);
-
     
     .cell {
-        box-sizing: border-box;
         padding: 0;
         margin: 0 ($gutter-width/2);
         float: left;
+        min-height: .1px;
     }
 }
-
-/* ------- FUNCTIONS ------- */
-@function power-of($base: $base, $exponent: $exponent) {
-    // calculates the power of the given base and exponent
-    $return-value: 0;
-    @if ($exponent == 0) {
-        // when the exponent is zero, the power is always 1
-        $return-value: 1;
-    } @else if ($exponent == 1) {
-        // when the exponent is 1, the power is always the same as the base
-        $return-value: $base;
-    } @else {
-        // calculate the power with a loop
-        $return-value: $base;
-        @for $i from 2 through $exponent {
-            $return-value: $return-value * $base;
-        }
-    }
-    @return $return-value;
-}
-@function rem($pixels) {
-    @return #{$pixels*16}px;
-}
-
-/* ------- MIXINS ------- */
-@mixin break($size) {  
-    @media (min-width: map-get($breakpoints, $size)) {
-        @content;
-    }
-}
-@mixin calc($property, $expression) {
-  #{$property}: calc(#{$expression}); 
-} 
 
 /* ------- CALCULATIONS ------- */
 $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $columns) - 1));
@@ -99,7 +54,7 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
 
     .#{$class-prefix}--#{$i} {
         $width-var: $current-column-width * 1%;
-        @include calc(width, $width-var + " - " + $gutter-width);
+        width: calc(#{$width-var} - #{$gutter-width});
     }
 
     @if($i < $columns) {
@@ -112,12 +67,13 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
 
             .#{$class-prefix}--#{$i}-#{$j} {
                 $width-var: $span-width * 1%;
-                @include calc(width, $width-var + " - " + $gutter-width);
+                width: calc(#{$width-var} - #{$gutter-width});
             }
         }
     }
 }
 
+//repeat procedure for media devices
 @each $key, $value in $breakpoints {
     @for $i from 1 through $columns {
         // calculate the current column width based on the first column
@@ -126,7 +82,7 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
         .#{$class-prefix}--#{$key}-#{$i} {
             @include break($key) {
                 $width-var: $current-column-width * 1%;
-                @include calc(width, $width-var + " - " + $gutter-width);
+                width: calc(#{$width-var} - #{$gutter-width});
             }
         }
 
@@ -141,7 +97,7 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
                 .#{$class-prefix}--#{$key}-#{$i}-#{$j} {
                     @include break($key) {
                         $width-var: $span-width * 1%;
-                        @include calc(width, $width-var + " - " + $gutter-width);
+                        width: calc(#{$width-var} - #{$gutter-width});
                     }
                 }
             }
