@@ -95,17 +95,16 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
     @for $i from 1 through $columns {
         // calculate the current column width based on the first column
         $current-column-width: $minimum-column-width + ($root-column * (power-of($multiplier, ($i - 1))));
+        $width-var: $current-column-width * 1%;
 
         .#{$class-prefix}--#{$key}-#{$i} {
             @include break($key) {
-                $width-var: $current-column-width * 1%;
                 width: #{$width-var};
             }
         }
 
         .#{$class-prefix}--offset-#{$key}-#{$i} {
             @include break($key) {
-                $width-var: $current-column-width * 1%;
                 margin-left: #{$width-var};
             }
         }
@@ -113,11 +112,11 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
         @if($i < $columns) {
             //set the initial span width: equal to the current column
             $span-width: $current-column-width;
+            $width-var: $span-width * 1%;
 
             @for $j from $i + 1 through $columns {
                 //add every next column to the span width
                 $span-width: $minimum-column-width + ($span-width + $root-column * (power-of($multiplier, $j - 1)));
-                $width-var: $span-width * 1%;
 
                 .#{$class-prefix}--#{$key}-#{$i}-#{$j} {
                     @include break($key) {
