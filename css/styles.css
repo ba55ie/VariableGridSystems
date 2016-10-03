@@ -7,24 +7,28 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #182fb5;
-  font-family: 'Franklin Gothic Light', Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   color: #fefefe; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #fefefe;
-  font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif; }
+  font-family: 'Roboto', sans-serif; }
 
 h1, .h1 {
   font-size: 4.25153rem;
-  line-height: 4.25153rem; }
+  line-height: 4.25153rem;
+  font-weight: 900; }
 
 h2, .h2 {
   font-size: 2.6244rem;
-  line-height: 2.6244rem; }
+  line-height: 2.6244rem;
+  font-weight: 700; }
 
 h3, .h3 {
   font-size: 1.62rem;
-  line-height: 1.62rem; }
+  line-height: 1.62rem;
+  font-weight: 500; }
 
 p {
   font-size: 1rem;
@@ -32,13 +36,15 @@ p {
   color: #fefefe;
   text-align: justify;
   text-justify: inter-word;
-  hanging-punctuation: first; }
+  hanging-punctuation: first;
+  font-weight: 400; }
 
 a {
   color: #fefefe;
   text-decoration: none;
   border-bottom: 2px solid #fefefe;
-  font-family: 'Franklin Gothic Heavy', 'Arial Narrow', Arial, sans-serif; }
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; }
   a:hover {
     border: none; }
 
