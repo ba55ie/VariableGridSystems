@@ -10,11 +10,9 @@ $rest-width: $total-width - ($columns * $minimum-column-width);
 
 // breakpoints
 $breakpoints: (
-  xs: 32rem,
   s: 48rem,
   m: 72rem,
-  l: 96rem,
-  xl: 102rem
+  l: 96rem
 );
 
 /*
@@ -36,10 +34,20 @@ DEFINE THE DEFAULT ROW & COLUMN
     margin: 0 (-$gutter-width/2);
     
     .cell {
-        padding: 0;
-        margin: 0 ($gutter-width/2);
+        box-sizing: border-box;
+        position: relative;
+        padding: 0 ($gutter-width/2);
         float: left;
-        min-height: .1px; //fix this
+    }
+
+    .#{$class-prefix}--no-offset {
+        margin-left: 0;
+    }
+
+    @each $key, $value in $breakpoints {
+        .#{$class-prefix}--#{$key}-no-offset {
+            margin-left: 0;
+        }
     }
 }
 
@@ -50,10 +58,16 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
 @for $i from 1 through $columns {
     // calculate the current column width based on the first column
     $current-column-width: $minimum-column-width + ($root-column * (power-of($multiplier, ($i - 1))));
+    $width-var: $current-column-width * 1%;
 
+    //define column
     .#{$class-prefix}--#{$i} {
-        $width-var: $current-column-width * 1%;
-        width: calc(#{$width-var} - #{$gutter-width});
+        width: #{$width-var};
+    }
+
+    //define offset
+    .#{$class-prefix}--offset-#{$i} {
+        margin-left: #{$width-var};
     }
 
     @if($i < $columns) {
@@ -63,16 +77,20 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
         @for $j from $i + 1 through $columns {
             //add every next column to the span width
             $span-width: $minimum-column-width + ($span-width + $root-column * (power-of($multiplier, $j - 1)));
+            $width-var: $span-width * 1%;
 
             .#{$class-prefix}--#{$i}-#{$j} {
-                $width-var: $span-width * 1%;
-                width: calc(#{$width-var} - #{$gutter-width});
+                width: #{$width-var};
+            }
+
+            .#{$class-prefix}--offset-#{$i}-#{$j} {
+                margin-left: #{$width-var};
             }
         }
     }
 }
 
-//repeat procedure for media devices (search for more efficient way)
+//repeat procedure for media devices (fix-me: create more efficient way)
 @each $key, $value in $breakpoints {
     @for $i from 1 through $columns {
         // calculate the current column width based on the first column
@@ -81,7 +99,14 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
         .#{$class-prefix}--#{$key}-#{$i} {
             @include break($key) {
                 $width-var: $current-column-width * 1%;
-                width: calc(#{$width-var} - #{$gutter-width});
+                width: #{$width-var};
+            }
+        }
+
+        .#{$class-prefix}--offset-#{$key}-#{$i} {
+            @include break($key) {
+                $width-var: $current-column-width * 1%;
+                margin-left: #{$width-var};
             }
         }
 
@@ -92,12 +117,15 @@ $root-column: ($multiplier - 1 ) * ($rest-width / (power-of($multiplier , $colum
             @for $j from $i + 1 through $columns {
                 //add every next column to the span width
                 $span-width: $minimum-column-width + ($span-width + $root-column * (power-of($multiplier, $j - 1)));
+                $width-var: $span-width * 1%;
 
                 .#{$class-prefix}--#{$key}-#{$i}-#{$j} {
                     @include break($key) {
-                        $width-var: $span-width * 1%;
-                        width: calc(#{$width-var} - #{$gutter-width});
+                        width: #{$width-var};
                     }
+                }
+                .#{$class-prefix}--offset--#{$key}-#{$i}-#{$j} {
+                    margin-left: #{$width-var};
                 }
             }
         }

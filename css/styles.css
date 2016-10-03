@@ -1,19 +1,21 @@
 /* ------- FUNCTIONS ------- */
 ::selection {
   color: #fefefe;
-  background-color: #313131; }
+  background-color: #182fb5; }
 
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #182fb5;
+  background-color: #fefefe;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  color: #fefefe; }
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.62rem;
+  color: #313131; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #fefefe;
-  font-family: 'Roboto', sans-serif; }
+  color: #182fb5;
+  font-family: 'Roboto Condensed', sans-serif; }
 
 h1, .h1 {
   font-size: 4.25153rem;
@@ -31,18 +33,14 @@ h3, .h3 {
   font-weight: 500; }
 
 p {
-  font-size: 1rem;
-  line-height: 1.62rem;
-  color: #fefefe;
   text-align: justify;
   text-justify: inter-word;
-  hanging-punctuation: first;
-  font-weight: 400; }
+  hanging-punctuation: first; }
 
 a {
-  color: #fefefe;
+  color: #182fb5;
   text-decoration: none;
-  border-bottom: 2px solid #fefefe;
+  border-bottom: 2px solid #182fb5;
   font-family: 'Roboto', sans-serif;
   font-weight: 700; }
   a:hover {
@@ -56,6 +54,12 @@ ul {
   overflow-x: hidden; }
 
 .divider {
-  background-color: #fefefe;
+  background-color: #182fb5;
   margin-top: 2.6244rem;
-  height: 1rem; }
+  height: .62rem; }
+
+.formula {
+  font-size: 1.62rem;
+  line-height: 1.62rem;
+  color: #182fb5;
+  font-weight: 500; }

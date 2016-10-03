@@ -4,5 +4,10 @@ $factor: 1.62;
 $columns: 6;
 $multiplier: $factor;
 $gutter-width: 26px;
-$minimum-column-width: 5;
-$bleed: true;
+$minimum-column-width: 3.5;
+$bleed: false;
+
+//colors
+$background: #fefefe;
+$foreground: #182fb5;
+$body-color: #313131;

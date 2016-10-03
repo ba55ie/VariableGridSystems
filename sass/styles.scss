@@ -2,22 +2,24 @@
 @import "functions";
 
 ::selection {
-    color: #fefefe;
-    background-color: #313131;
+    color: $background;
+    background-color: $foreground;
 }
 
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #182fb5;
+    background-color: $background;
     font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    color: #fefefe;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: power-of($factor, 1) * 1rem;
+    color: $body-color;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6  {
-    color: #fefefe;
-    font-family: 'Roboto', sans-serif;
+    color: $foreground;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 h1, .h1 {
@@ -39,19 +41,16 @@ h3, .h3 {
 }
 
 p {
-    font-size: 1rem;
-    line-height: power-of($factor, 1) * 1rem;
-    color: #fefefe;
     text-align: justify;
     text-justify: inter-word;
     hanging-punctuation: first;
-    font-weight: 400;
+
 }
 
 a {
-    color: #fefefe;
+    color: $foreground;
     text-decoration: none;
-    border-bottom: 2px solid #fefefe;
+    border-bottom: 2px solid $foreground;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
 
@@ -71,7 +70,14 @@ ul {
 }
 
 .divider {
-    background-color: #fefefe;
+    background-color: $foreground;
     margin-top: power-of($factor, 2) * 1rem;
-    height: 1rem;
+    height: .62rem;
+}
+
+.formula {
+    font-size: power-of($factor, 1) * 1rem;
+    line-height: power-of($factor, 1) * 1rem;
+    color: $foreground;
+    font-weight: 500;
 }
